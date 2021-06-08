@@ -10,6 +10,7 @@ function TasksList({ list, category, resetList }) {
   const jwt = localStorage.getItem("token");
   let userID = jwtDecode(jwt)._id;
 
+  //Update as Completed
   const changeStatusToCompleted = (id) => {
     axios
       .put(`http://localhost:3004/update-task/${userID}`, {
@@ -22,6 +23,7 @@ function TasksList({ list, category, resetList }) {
       });
   };
 
+  //Update as Active
   const changeStatusToActive = (id) => {
     axios
       .put(`http://localhost:3004/update-task/${userID}`, {
@@ -34,6 +36,7 @@ function TasksList({ list, category, resetList }) {
       });
   };
 
+  //Handle Check All
   const handleAllCheck = () => {
     if (selected.length == list.length) {
       setselected([]);
@@ -44,6 +47,7 @@ function TasksList({ list, category, resetList }) {
     }
   };
 
+  //Handle Individual Check
   const handleCheck = (id) => {
     let checked = selected;
     if (checked.includes(id)) {
@@ -59,6 +63,7 @@ function TasksList({ list, category, resetList }) {
     console.log(selected);
   };
 
+  //Bulk Update as Active
   const markSelectedActive = () => {
     selected.forEach((id) => {
       axios
@@ -74,6 +79,7 @@ function TasksList({ list, category, resetList }) {
     setselected([]);
   };
 
+  //Bulk Update as Completed
   const markSelectedCompleted = () => {
     selected.forEach((id) => {
       axios

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Switch, Route } from "react-router-dom";
+
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 
@@ -14,6 +15,8 @@ function Tasks(props) {
   useEffect(() => {
     document.title = "Tasks App";
     const jwt = localStorage.getItem("token");
+
+    // Set User by Token
     if (jwt) {
       setusern(jwtDecode(jwt).name);
       setuserID(jwtDecode(jwt)._id);
@@ -23,6 +26,7 @@ function Tasks(props) {
     }
   }, []);
 
+  // Logout Function
   const logout = () => {
     localStorage.removeItem("token");
     props.history.push("/login");
@@ -35,6 +39,7 @@ function Tasks(props) {
   const [newItem, setnewItem] = useState("");
 
   useEffect(() => {
+    //Get Tasks List
     function fetchTasks() {
       axios
         .get(`http://localhost:3004/${userID}`)
@@ -59,6 +64,7 @@ function Tasks(props) {
     fetchTasks();
   }, []);
 
+  //Update Tasks List
   const resetList = (newList) => {
     setTasks(newList);
 
@@ -73,10 +79,12 @@ function Tasks(props) {
     setcompletedTasks(completed);
   };
 
+  //Handle Input Change
   const onChange = (e) => {
     setnewItem(e.target.value);
   };
 
+  //Add New to List
   const addToList = (e) => {
     if (e.key === "Enter") {
       axios

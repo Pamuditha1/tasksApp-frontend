@@ -10,6 +10,7 @@ function Register(props) {
     password: "",
   });
 
+  //Handle Input Changes
   const onchange = (e) => {
     setuserData({
       ...userData,
@@ -17,6 +18,7 @@ function Register(props) {
     });
   };
 
+  //Register User
   const submit = (e) => {
     e.preventDefault();
     axios
@@ -33,13 +35,6 @@ function Register(props) {
       });
   };
 
-  const style = {
-    backgroundColor: "rgb(255, 255, 255, 1)",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  };
-
   const formStyle = {
     backgroundColor: "rgb(0, 0, 0, 0.7)",
     padding: "50px 30px 50px 30px",
@@ -48,7 +43,7 @@ function Register(props) {
   };
 
   return (
-    <div className="row" style={style}>
+    <div className="row">
       <div className="col-12 mt-5">
         <center>
           <h3>User Registration</h3>

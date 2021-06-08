@@ -11,6 +11,8 @@ function App() {
 
   return (
     <div className="container">
+
+      {/* Notification Component */}
       <ToastContainer />
       <Switch>
         <Route path="/app" component={Tasks} />

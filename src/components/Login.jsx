@@ -9,6 +9,7 @@ function Login(props) {
     password: "",
   });
 
+  //Handle Input Change
   const onchange = (e) => {
     setloginData({
       ...loginData,
@@ -16,6 +17,7 @@ function Login(props) {
     });
   };
 
+  //Login User
   const submit = async (e) => {
     e.preventDefault();
     axios
@@ -32,13 +34,6 @@ function Login(props) {
       });
   };
 
-  const style = {
-    backgroundColor: "rgb(255, 255, 255, 1)",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-  };
-
   const formStyle = {
     backgroundColor: "rgb(0, 0, 0, 0.7)",
     padding: "50px 30px 50px 30px",
@@ -47,7 +42,7 @@ function Login(props) {
   };
 
   return (
-    <div className="row" style={style}>
+    <div className="row">
       <div className="col-12 mt-5">
         <center>
           <h3>User Login</h3>
